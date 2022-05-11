@@ -210,6 +210,7 @@ module.exports = Comments;
 |POST|/lugartres/:id/delete|eliminar info de la opción|
 |POST|/lugartres/:id/coment|comentario sobre la opción|
 |POST|/usuario/:id/eliminar-usuario|Eliminar usuario|
+|GET|/api|Api|
 
 ---
 
@@ -231,32 +232,32 @@ module.exports = Comments;
 ---
 
 ## PAGES AND COMPONENTS. 
-
 1. HomePage
-   -RandomButton
-    -PlacesChoice
-    
-
 2. LoginPage
-   -LoginForm
-
 3. SignUpPage
-   -SignupForm
-
 4. ChoicePage
-   -ChoiceCard
-
 5. ProfilePage
-   -ProfileCard
-   
+
 
 ## PUNTOS CON INÉS
 
-COMPONENTES, QUE VAN A COMPONER CADA UNA DE LAS PÁGINAS
+CREAR UNA RUTA TIPO GET QUE ME SERVIRÁ PARA TRAER LOS PLACES. ME TRAIGO TODOS Y FILTER PARA OBTENER 3
 
-SUBIR REPO
-PLANIFICACION COMPONENTES
-PICAR RUTAS DE SERVIRDOR
+
+
+## LISTO:
+
+CREAR REPO
+MODELOS USUARIO, PLACES, SERVIDOR
+RUTA CREAR USUARIO
+RUTA REGITRAR USUARIO
+RUTA LOGUEAR USUARIO
+RUTA CREAR LUGARES
+RUTA BORRAR LUGARES 
+RUTA EDIT PLACES
+RUTA VERIFY
+RUTA GUARDAR EN FAVORITOS 
+RUTA ELIMINAR DE FAVORITOS 
 
 
 

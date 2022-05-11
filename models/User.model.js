@@ -2,17 +2,20 @@ const { Schema, model } = require("mongoose");
 
 const userSchema = new Schema(
   {
+
+    imageURL: {
+      type: String
+    },
+
     username: {
       type: String,
-      unique: true,
-      trim: true
+      //unique: true,
     },
 
     email: {
       type: String,
-      unique: true,
-      required: [true, 'Email obligatorio'],
-      trim: true
+      //unique: true,
+      //required: [true, 'Email obligatorio'],
     },
 
     role: {
@@ -23,12 +26,14 @@ const userSchema = new Schema(
 
     password: {
       type: String,
-      required: [true, 'Contraseña obligatoria'],
-      trim: true
+      //required: [true, 'Contraseña obligatoria'],
+
     },
 
-    placesfavs: [String],
-
+    favPlaces: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Place'
+    }]
   },
 
   {

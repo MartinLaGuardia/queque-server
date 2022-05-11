@@ -1,7 +1,7 @@
 module.exports = (app) => {
   app.use((req, res, next) => {
     // this middleware runs whenever requested page is not available
-    res.status(404).json({ errorMessage: "This route does not exist" });
+    res.status(404).json({ errorMessage: "TODOS COMETEMOS ERRORES, LOS MIOS SON DEL TIPO: 404" });
   });
 
   app.use((err, req, res, next) => {
@@ -14,7 +14,7 @@ module.exports = (app) => {
       res
         .status(500)
         .json({
-          errorMessage: "Internal server error. Check the server console",
+          errorMessage: "Upsss! se me ha visto el plumero. Check the server console",
         });
     }
   });
