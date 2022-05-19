@@ -241,9 +241,8 @@ module.exports = Comments;
 
 ## PUNTOS CON INÉS
 
-CREAR UNA RUTA TIPO GET QUE ME SERVIRÁ PARA TRAER LOS PLACES. ME TRAIGO TODOS Y FILTER PARA OBTENER 3
-
-
+eliminar cada place 
+editar cada place
 
 ## LISTO:
 
@@ -258,6 +257,25 @@ RUTA EDIT PLACES
 RUTA VERIFY
 RUTA GUARDAR EN FAVORITOS 
 RUTA ELIMINAR DE FAVORITOS 
+CREAR UNA RUTA TIPO GET QUE ME SERVIRÁ PARA TRAER LOS PLACES. ME TRAIGO TODOS Y FILTER PARA OBTENER 3
+LEVANTADO CLIENTE
+CREADAS RUTAS DE:
+-HOME
+-LOGIN
+-SIGNUP
+CREADOS SERVICIOS DE AUTH
+CREADO CONTEXT DE USER 
+HACE LA LLAMADA PARA HACER EL VERiFY DE AUTHENTICATE USER
+// crear un par de places con postman
+// traer los places y pasarlos como prop a placeslist
+Mostrarlos en place list con un place card por cada place:
+se duplica el contenido
+no se pinta el adress, pero su se ve en la pestaña respuesta de fetch
+Crear el formualrio de new place form:
+usar el servicoo de crear nuevo place en el form para crearlo en la BBDD
+crear pagina de detalles de cada place
+
+
 
 
 

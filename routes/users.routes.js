@@ -7,11 +7,12 @@ const { isAuthenticated } = require('../middlewares/jwt.middleware');
 
 //USER DETAILS
 
-router.get('/profile-user/:id', isAuthenticated, (req, res) => {
-    const { id } = req.params
+router.get('/profile-user', isAuthenticated, (req, res) => {
+    const { _id } = req.payload
 
     User
-        .findById(id)
+        .findById(_id)
+        .populate('favPlaces')
         .then(response => res.json(response))
         .catch(err => console.log(err))
 

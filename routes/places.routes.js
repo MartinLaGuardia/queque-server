@@ -31,11 +31,23 @@ router.get('/random-places', (req, res) => {
         .catch(err => console.log(err))
 })
 
+// TODOS LOS PLACES
+router.get('/all-places', (req, res) => {
+
+    Place
+        .find()
+        .then(response => res.json(response))
+        .catch(err => console.log(err))
+
+})
+
 
 //CREAR PLACES
 
-router.post('/create-place', (req, res) => {
-    const { owner, name, street, number, city, zipCode, latitude, longitude, phone, imageURL, foodstyle, description } = req.body
+router.post('/create-place', isAuthenticated, (req, res) => {
+    const { name, street, number, city, zipCode, latitude, longitude, phone, imageURL, foodstyle, description } = req.body
+
+    const { _id } = req.payload
 
     const location = {
         type: 'Point',
@@ -43,7 +55,7 @@ router.post('/create-place', (req, res) => {
     }
 
     Place
-        .create({ owner, name, address: { street, number, city, zipCode, location }, phone, imageURL, foodstyle, description })
+        .create({ owner: _id, name, address: { street, number, city, zipCode, location }, phone, imageURL, foodstyle, description })
         .then(response => res.json(response))
         .catch(err => console.log(err))
 
@@ -52,6 +64,7 @@ router.post('/create-place', (req, res) => {
 //PLACE DETAILS
 
 router.get('/detail-place/:id', (req, res) => {
+
     const { id } = req.params
 
     Place
@@ -66,7 +79,7 @@ router.get('/detail-place/:id', (req, res) => {
 
 router.put('/:id/edit-place', (req, res) => {
     const { id } = req.params
-    const { owner, name, street, number, city, zipCode, longitude, latitude, phone, imageURL, foodstyle, description } = req.body
+    const { name, street, number, city, zipCode, longitude, latitude, phone, imageURL, foodstyle, description } = req.body
 
     const location = {
         type: 'Point',
@@ -74,7 +87,7 @@ router.put('/:id/edit-place', (req, res) => {
     }
 
     Place
-        .findByIdAndUpdate(id, { owner, name, address: { street, number, city, zipCode, location }, phone, imageURL, foodstyle, description })
+        .findByIdAndUpdate(id, { name, address: { street, number, city, zipCode, location }, phone, imageURL, foodstyle, description })
         .then(response => res.json(response))
         .catch(err => console.log(err))
 
@@ -99,11 +112,11 @@ router.delete('/:id/delete-place', (req, res) => {
 router.put('/:id/save-fav-place', isAuthenticated, (req, res) => {
 
     const { id } = req.params
-    const userId = req.payload
+    const { _id } = req.payload
 
 
     User
-        .findByIdAndUpdate(userId, { $addToSet: { favPlaces: id } }, { new: true })
+        .findByIdAndUpdate(_id, { $addToSet: { favPlaces: id } }, { new: true })
         .then(response => res.json(response))
         .catch(err => console.log(err))
 });
@@ -114,10 +127,10 @@ router.put('/:id/save-fav-place', isAuthenticated, (req, res) => {
 router.put('/:id/delete-fav-place', isAuthenticated, (req, res) => {
 
     const { id } = req.params
-    const userId = req.payload
+    const { _id } = req.payload
 
     User
-        .findByIdAndUpdate(userId, { $pull: { favPlaces: id } }, { new: true })
+        .findByIdAndUpdate(_id, { $pull: { favPlaces: id } }, { new: true })
         .then(response => res.json(response))
         .catch(err => console.log(err))
 
