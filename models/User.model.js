@@ -7,6 +7,10 @@ const userSchema = new Schema(
       type: String
     },
 
+    favFood: {
+      type: String
+    },
+
     username: {
       type: String,
       //unique: true,
